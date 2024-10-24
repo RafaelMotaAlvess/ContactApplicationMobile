@@ -41,7 +41,7 @@ class ContactDatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATAB
     fun getAllContacts(): List<Contact> {
         val notesList = mutableListOf<Contact>()
         val db = readableDatabase
-        val query = "SELECT * FROM $TABLE_NAME"
+        val query = "SELECT * FROM $TABLE_NAME ORDER BY $COLUMN_TITLE COLLATE NOCASE ASC"
         val cursor = db.rawQuery(query, null)
 
         while (cursor.moveToNext()) {
